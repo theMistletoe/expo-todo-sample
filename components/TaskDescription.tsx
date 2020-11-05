@@ -31,4 +31,9 @@ const styles = StyleSheet.create({
     },
 });
 
+TaskDescription.defaultProps = {
+    task: { title: "", description: ""},
+    handlePress: () => {}
+}
+
 export default TaskDescription;
