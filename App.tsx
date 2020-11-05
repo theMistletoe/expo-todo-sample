@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, FlatList, TextInput, Button, Alert, Modal, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Alert, Modal, TouchableHighlight, GestureResponderEvent } from 'react-native';
 import { TaskItem } from './types/TaskItem';
+import TaskList from './components/TaskList';
 
 export default function App() {
 
@@ -25,7 +26,8 @@ export default function App() {
   };
 
   const handlePressTaskItem = (index: number) => {
-    console.log("aaaaaaaaaaaaaaaa", index);
+    // console.log("aaaaaaaaaaaaaaaa", event.target);
+    console.log(index);
     setSelectedIndex(index);
     setModalVisible(true);
   };
@@ -67,10 +69,11 @@ export default function App() {
         title="Press me"
         onPress={handlePress}
       />
-      <FlatList
+      {/* <FlatList
         data={tasks}
         renderItem={({item, index}) => <Text style={styles.item} key={index} onPress={() => handlePressTaskItem(index)}>{item.title}</Text>}
-      />
+      /> */}
+      <TaskList tasks={tasks} handlePressTaskItem={handlePressTaskItem} />
       <TouchableHighlight
         style={styles.openButton}
         onPress={() => {
