@@ -57,8 +57,6 @@ export default function App() {
           </View>
         </View>
       </Modal>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
       <TextInput
         style={{height: 40}}
         placeholder="Type here to translate!"
