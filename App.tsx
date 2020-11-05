@@ -2,34 +2,27 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, FlatList, TextInput, Button, Alert } from 'react-native';
 
-type nameItem = {
-  key: string;
+type TaskItem = {
+  title: string;
 };
 
 export default function App() {
 
-  const [name, setName] = useState<nameItem[]>([]);
+  const [tasks, setTasks] = useState<TaskItem[]>([]);
   const [inputText, setInputText] = useState<string>('');
 
   useEffect(() => {
-    setName([
-      {key: 'Devin'},
-      {key: 'Dan'},
-      {key: 'Dominic'},
-      {key: 'Jackson'},
-      {key: 'James'},
-      {key: 'Joel'},
-      {key: 'John'},
-      {key: 'Jillian'},
-      {key: 'Jimmy'},
-      {key: 'Julie'},
+    setTasks([
+      {title: 'Task1'},
+      {title: 'Task2'},
+      {title: 'Task3'},
     ]);
   }, []);
 
   const handlePress = () => {
-    const newNameList = name.slice();
-    newNameList.push({key: inputText});
-    setName(newNameList);
+    const newNameList = tasks.slice();
+    newNameList.push({title: inputText});
+    setTasks(newNameList);
   };
 
   return (
@@ -47,8 +40,8 @@ export default function App() {
         onPress={handlePress}
       />
       <FlatList
-        data={name}
-        renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
+        data={tasks}
+        renderItem={({item}) => <Text style={styles.item}>{item.title}</Text>}
       />
     </View>
   );
