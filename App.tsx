@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, FlatList, TextInput, Button, Alert } from 'reac
 
 type TaskItem = {
   title: string;
+  description: string;
 };
 
 export default function App() {
@@ -13,15 +14,15 @@ export default function App() {
 
   useEffect(() => {
     setTasks([
-      {title: 'Task1'},
-      {title: 'Task2'},
-      {title: 'Task3'},
+      {title: 'Task1', description: "description1"},
+      {title: 'Task2', description: "description2"},
+      {title: 'Task3', description: "description3"},
     ]);
   }, []);
 
   const handlePress = () => {
     const newNameList = tasks.slice();
-    newNameList.push({title: inputText});
+    newNameList.push({title: inputText, description: ""});
     setTasks(newNameList);
   };
 
