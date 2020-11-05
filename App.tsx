@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Alert, Modal, TouchableHighlight, GestureResponderEvent } from 'react-native';
 import { TaskItem } from './types/TaskItem';
 import TaskList from './components/TaskList';
+import TaskDescription from './components/TaskDescription';
 
 export default function App() {
 
@@ -26,10 +27,12 @@ export default function App() {
   };
 
   const handlePressTaskItem = (index: number) => {
-    // console.log("aaaaaaaaaaaaaaaa", event.target);
-    console.log(index);
     setSelectedIndex(index);
     setModalVisible(true);
+  };
+
+  const handlePressModalCloseButton = () => {
+    setModalVisible(!modalVisible);
   };
 
   return (
@@ -44,16 +47,7 @@ export default function App() {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World!</Text>
-
-            <TouchableHighlight
-              style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
-              onPress={() => {
-                setModalVisible(!modalVisible);
-              }}
-            >
-              <Text style={styles.textStyle}>Hide Modal</Text>
-            </TouchableHighlight>
+            <TaskDescription task={tasks[selectedIndex]} handlePress={handlePressModalCloseButton} />
           </View>
         </View>
       </Modal>
@@ -68,14 +62,6 @@ export default function App() {
         onPress={handlePress}
       />
       <TaskList tasks={tasks} handlePressTaskItem={handlePressTaskItem} />
-      <TouchableHighlight
-        style={styles.openButton}
-        onPress={() => {
-          setModalVisible(true);
-        }}
-      >
-        <Text style={styles.textStyle}>Show Modal</Text>
-      </TouchableHighlight>
     </View>
   );
 }
