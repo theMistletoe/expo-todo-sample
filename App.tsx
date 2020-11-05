@@ -27,7 +27,6 @@ export default function App() {
   }, []);
 
   const handlePress = () => {
-    console.log('xxxxx');
     const newNameList = name.slice();
     newNameList.push({key: inputText});
     setName(newNameList);
