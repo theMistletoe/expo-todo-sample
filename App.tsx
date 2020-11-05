@@ -1,11 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, FlatList, TextInput, Button, Alert, Modal, TouchableHighlight } from 'react-native';
-
-type TaskItem = {
-  title: string;
-  description: string;
-};
+import { TaskItem } from './types/TaskItem';
 
 export default function App() {
 
