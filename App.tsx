@@ -67,10 +67,6 @@ export default function App() {
         title="Press me"
         onPress={handlePress}
       />
-      {/* <FlatList
-        data={tasks}
-        renderItem={({item, index}) => <Text style={styles.item} key={index} onPress={() => handlePressTaskItem(index)}>{item.title}</Text>}
-      /> */}
       <TaskList tasks={tasks} handlePressTaskItem={handlePressTaskItem} />
       <TouchableHighlight
         style={styles.openButton}
