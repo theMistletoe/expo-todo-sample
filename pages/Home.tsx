@@ -9,8 +9,6 @@ export default function App() {
 
   const [tasks, setTasks] = useState<TaskItem[]>([]);
   const [inputText, setInputText] = useState<string>('');
-  const [modalVisible, setModalVisible] = useState<boolean>(false);
-  const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
   useEffect(() => {
     setTasks([
@@ -26,31 +24,8 @@ export default function App() {
     setTasks(newNameList);
   };
 
-  const handlePressTaskItem = (index: number) => {
-    setSelectedIndex(index);
-    setModalVisible(true);
-  };
-
-  const handlePressModalCloseButton = () => {
-    setModalVisible(!modalVisible);
-  };
-
   return (
     <View style={styles.container}>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-        }}
-      >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <TaskDescription task={tasks[selectedIndex]} handlePress={handlePressModalCloseButton} />
-          </View>
-        </View>
-      </Modal>
       <TextInput
         style={{height: 40}}
         placeholder="Type here to translate!"
@@ -61,7 +36,7 @@ export default function App() {
         title="Press me"
         onPress={handlePress}
       />
-      <TaskList tasks={tasks} handlePressTaskItem={handlePressTaskItem} />
+      <TaskList tasks={tasks} />
     </View>
   );
 }

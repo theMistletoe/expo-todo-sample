@@ -5,7 +5,6 @@ import { TaskItem } from '../types/TaskItem';
 
 type Props = {
     tasks: TaskItem[];
-    handlePressTaskItem: (index: number) => void;
 }
 
 const TaskList = (props: Props) => {
