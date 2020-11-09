@@ -1,7 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Alert, Modal, TouchableHighlight, GestureResponderEvent } from 'react-native';
-import { TaskItem } from './types/TaskItem';
+import React from 'react';
 import Home from './pages/Home';
 import Detail from './pages/Detail';
 

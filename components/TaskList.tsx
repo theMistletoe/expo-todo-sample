@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, Text, FlatList, GestureResponderEvent } from 'react-native';
+import { StyleSheet, Text, FlatList } from 'react-native';
 import { TaskItem } from '../types/TaskItem';
 
 type Props = {
