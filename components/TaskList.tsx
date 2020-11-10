@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, Text, FlatList } from 'react-native';
 import { TaskItem } from '../types/TaskItem';
+import Task from './Task';
 
 type Props = {
     tasks: TaskItem[];
@@ -9,21 +10,13 @@ type Props = {
 
 const TaskList = (props: Props) => {
     const navigation = useNavigation(); // (2)
-    // TODO: deleteボタンの実装
     return (
-        <>
-            <FlatList
-                data={props.tasks}
-                renderItem={({item, index}) => <Text style={styles.item} key={index} onPress={() => {
-                    navigation.navigate(
-                        'Detail',
-                        {
-                            itemTitle: item.title,
-                            itemDescription: item.description,
-                        }
-                    )}}>{item.title}</Text>}
-            />
-        </>
+        <FlatList
+            data={props.tasks}
+            renderItem={({item, index}) => {
+                return <Task task={item} index={index} />;
+            }}
+        />
     );
 };
 

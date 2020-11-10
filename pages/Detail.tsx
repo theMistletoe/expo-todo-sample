@@ -1,20 +1,18 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { useSelector } from 'react-redux';
 import TaskDescription from '../components/TaskDescription';
 import { TaskItem } from '../types/TaskItem';
 
 // TODO ここのrouteの型推論はv5で聞かせられるようになってるらしい
 // https://qiita.com/shinnoki/items/e32e20b812606ce7219c
-// TODO わたすのはidだけにする
 export default function Detail({ route }) {
   const navigation = useNavigation(); // (2)
+  const getData = useSelector((state: any) => state);
 
-  const { itemTitle, itemDescription } = route.params;
-  const task:TaskItem = {
-    title: itemTitle,
-    description: itemDescription,
-  };
+  const { id } = route.params;
+  const task: TaskItem = getData.todos.find((task: TaskItem) => task.id === id)
 
   const handlePressOnCloseButton = () => {
     navigation.goBack()
@@ -22,7 +20,9 @@ export default function Detail({ route }) {
 
   return (
     <View style={styles.container}>
-      <TaskDescription task={task} handlePress={handlePressOnCloseButton} />
+      <TaskDescription
+        task={task}
+        handlePress={handlePressOnCloseButton} />
     </View>
   );
 }
