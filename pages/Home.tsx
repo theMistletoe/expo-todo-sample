@@ -8,14 +8,12 @@ import { addTask, deleteTask, updateTask } from '../redux/Todo/actions';
 export default function App() {
 
   const getData = useSelector((state: any) => state);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const [inputText, setInputText] = useState<string>('');
 
   const handlePress = () => {
-    // const newNameList = tasks.slice();
-    // newNameList.push({id: "0", title: inputText, description: ""});
-    // setTasks(newNameList);
+    dispatch(addTask(inputText));
   };
 
   return (
