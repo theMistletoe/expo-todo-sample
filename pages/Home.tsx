@@ -1,33 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, TextInput, Button } from 'react-native';
-import { TaskItem } from '../types/TaskItem';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import { useSelector } from 'react-redux'
 import TaskList from '../components/TaskList';
-import { useSelector, useDispatch } from 'react-redux'
-import { addTask, deleteTask, updateTask } from '../redux/Todo/actions';
+import TaskForm from '../components/TaskForm';
 
 export default function App() {
 
   const getData = useSelector((state: any) => state);
-  const dispatch = useDispatch();
-
-  const [inputText, setInputText] = useState<string>('');
-
-  const handlePress = () => {
-    dispatch(addTask(inputText));
-  };
 
   return (
     <View style={styles.container}>
-      <TextInput
-        style={{height: 40}}
-        placeholder="Type here to translate!"
-        onChangeText={text => setInputText(text)}
-        value={inputText}
-      />
-      <Button
-        title="Press me"
-        onPress={handlePress}
-      />
+      <TaskForm />
       <TaskList tasks={getData.todos} />
     </View>
   );
