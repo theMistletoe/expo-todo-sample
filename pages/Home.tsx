@@ -2,24 +2,30 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, TextInput, Button } from 'react-native';
 import { TaskItem } from '../types/TaskItem';
 import TaskList from '../components/TaskList';
+import { useSelector, useDispatch } from 'react-redux'
+import { addTask, deleteTask, updateTask } from '../redux/Todo/actions';
 
 export default function App() {
 
-  const [tasks, setTasks] = useState<TaskItem[]>([]);
+  const getData = useSelector((state: any) => state);
+  // const dispatch = useDispatch();
+  console.log(getData);
+
+  // const [tasks, setTasks] = useState<TaskItem[]>([]);
   const [inputText, setInputText] = useState<string>('');
 
-  useEffect(() => {
-    setTasks([
-      {title: 'Task1', description: "description1"},
-      {title: 'Task2', description: "description2"},
-      {title: 'Task3', description: "description3"},
-    ]);
-  }, []);
+  // useEffect(() => {
+  //   setTasks([
+  //     {id: "xxx", title: 'Task1', description: "description1"},
+  //     {id: "yyy",title: 'Task2', description: "description2"},
+  //     {id: "zzz",title: 'Task3', description: "description3"},
+  //   ]);
+  // }, []);
 
   const handlePress = () => {
-    const newNameList = tasks.slice();
-    newNameList.push({title: inputText, description: ""});
-    setTasks(newNameList);
+    // const newNameList = tasks.slice();
+    // newNameList.push({id: "0", title: inputText, description: ""});
+    // setTasks(newNameList);
   };
 
   return (
@@ -34,7 +40,7 @@ export default function App() {
         title="Press me"
         onPress={handlePress}
       />
-      <TaskList tasks={tasks} />
+      <TaskList tasks={getData.todos} />
     </View>
   );
 }
