@@ -9,18 +9,8 @@ export default function App() {
 
   const getData = useSelector((state: any) => state);
   // const dispatch = useDispatch();
-  console.log(getData);
 
-  // const [tasks, setTasks] = useState<TaskItem[]>([]);
   const [inputText, setInputText] = useState<string>('');
-
-  // useEffect(() => {
-  //   setTasks([
-  //     {id: "xxx", title: 'Task1', description: "description1"},
-  //     {id: "yyy",title: 'Task2', description: "description2"},
-  //     {id: "zzz",title: 'Task3', description: "description3"},
-  //   ]);
-  // }, []);
 
   const handlePress = () => {
     // const newNameList = tasks.slice();
