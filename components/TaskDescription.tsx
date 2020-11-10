@@ -8,6 +8,10 @@ type Props = {
 }
 
 const TaskDescription = (props: Props) => {
+    // TODO 表示を入力欄にして修正できるようにする
+    // TODO 入力に応じてtitleのstateをupdateできるようにする
+    // TODO 入力に応じてdescのstateをupdateできるようにする
+    // TODO deleteボタンの実装
     return (
         <View style={styles.container}>
             <Text style={styles.item}>{props.task.title}</Text>

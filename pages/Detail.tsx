@@ -6,6 +6,7 @@ import { TaskItem } from '../types/TaskItem';
 
 // TODO ここのrouteの型推論はv5で聞かせられるようになってるらしい
 // https://qiita.com/shinnoki/items/e32e20b812606ce7219c
+// TODO わたすのはidだけにする
 export default function Detail({ route }) {
   const navigation = useNavigation(); // (2)
 

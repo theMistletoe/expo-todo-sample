@@ -9,6 +9,7 @@ type Props = {
 
 const TaskList = (props: Props) => {
     const navigation = useNavigation(); // (2)
+    // TODO: deleteボタンの実装
     return (
         <>
             <FlatList
