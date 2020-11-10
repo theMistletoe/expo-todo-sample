@@ -17,7 +17,7 @@ const Task = (props: Props) => {
         {
           id: props.task.id,
         }
-    )
+      )
     };
 
     return (
