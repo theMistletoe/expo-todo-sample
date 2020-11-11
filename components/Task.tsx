@@ -1,7 +1,9 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 import { TaskItem } from '../types/TaskItem';
+import { useDispatch } from 'react-redux';
+import { deleteTask } from '../redux/Todo/actions';
 
 type Props = {
     task: TaskItem;
@@ -10,7 +12,8 @@ type Props = {
 
 const Task = (props: Props) => {
     const navigation = useNavigation(); // (2)
-    // TODO: deleteボタンの実装
+    const dispatch = useDispatch();
+
     const handlePressOnTaskTitle = () => {
       navigation.navigate(
         'Detail',
@@ -20,23 +23,39 @@ const Task = (props: Props) => {
       )
     };
 
+    const handlePressOnDeleteButton = () => {
+      dispatch(deleteTask(props.task.id));
+      navigation.navigate('Home');
+    }
+
     return (
-      <Text
-        style={styles.item}
-        key={props.index}
-        onPress={handlePressOnTaskTitle}
-      >
-        {props.task.title}
-      </Text>
+      <View style={styles.container}>
+        <Text
+          style={styles.item}
+          key={props.index}
+          onPress={handlePressOnTaskTitle}
+          >
+          {props.task.title}
+        </Text>
+        <Button
+          title="Delete"
+          onPress={handlePressOnDeleteButton}
+          />
+      </View>
     );
 };
 
 const styles = StyleSheet.create({
-    item: {
-        padding: 10,
-        fontSize: 18,
-        height: 44,
-    },
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  item: {
+    flex: 2,
+    padding: 10,
+    fontSize: 18,
+    height: 44,
+  },
 });
 
 export default Task;
