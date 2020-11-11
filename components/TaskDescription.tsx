@@ -54,6 +54,7 @@ const TaskDescription = (props: Props) => {
                     <Button title="close" onPress={props.handlePress}/>
                 </View>
                 <View style={styles.item}>
+                    {/* TODO スマホでこのボタンから削除実行すると死ぬ */}
                     <Button color='red' title="Delete" onPress={handlePressOnDeleteButton} />
                 </View>
             </View>
