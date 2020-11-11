@@ -51,7 +51,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   item: {
-    flex: 2,
     padding: 10,
     fontSize: 18,
     height: 44,
