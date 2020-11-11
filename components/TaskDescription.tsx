@@ -14,13 +14,21 @@ const TaskDescription = (props: Props) => {
 
     // TODO 入力に応じてdescのstateをupdateできるようにする
     const handleOnChangeTitle = (title: string) => {
-        console.log("chainged", title);
         const updatedTask: TaskItem = {
             ...props.task,
             title
         }
         dispatch(updateTask(updatedTask));
     }
+
+    const handleOnChangeDescription = (description: string) => {
+        const updatedTask: TaskItem = {
+            ...props.task,
+            description
+        }
+        dispatch(updateTask(updatedTask));
+    }
+
     // TODO deleteボタンの実装
     return (
         <View style={styles.container}>
@@ -29,7 +37,11 @@ const TaskDescription = (props: Props) => {
                 onChangeText={handleOnChangeTitle}
                 value={props.task.title}
             />
-            <Text style={styles.item}>{props.task.description}</Text>
+            <TextInput
+                style={styles.itemdesc}
+                onChangeText={handleOnChangeDescription}
+                value={props.task.description}
+            />
             <Button title="close" onPress={props.handlePress}/>
         </View>
     );
@@ -46,6 +58,11 @@ const styles = StyleSheet.create({
         padding: 10,
         fontSize: 18,
         height: 44,
+    },
+    itemdesc: {
+        padding: 10,
+        fontSize: 18,
+        height: 80,
     },
 });
 
