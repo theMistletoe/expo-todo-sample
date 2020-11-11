@@ -43,6 +43,8 @@ const TaskDescription = (props: Props) => {
                 value={props.task.title}
             />
             <TextInput
+                multiline = {true}
+                numberOfLines = {4}
                 style={styles.itemdesc}
                 onChangeText={handleOnChangeDescription}
                 value={props.task.description}
