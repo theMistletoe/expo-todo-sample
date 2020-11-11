@@ -1,6 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, GestureResponderEvent } from 'react-native';
+import { StyleSheet, Text, View, Button, GestureResponderEvent, TextInput } from 'react-native';
 import { TaskItem } from '../types/TaskItem';
+import { useDispatch } from 'react-redux';
+import { updateTask } from '../redux/Todo/actions';
 
 type Props = {
     task: TaskItem;
@@ -8,13 +10,25 @@ type Props = {
 }
 
 const TaskDescription = (props: Props) => {
-    // TODO 表示を入力欄にして修正できるようにする
-    // TODO 入力に応じてtitleのstateをupdateできるようにする
+    const dispatch = useDispatch();
+
     // TODO 入力に応じてdescのstateをupdateできるようにする
+    const handleOnChangeTitle = (title: string) => {
+        console.log("chainged", title);
+        const updatedTask: TaskItem = {
+            ...props.task,
+            title
+        }
+        dispatch(updateTask(updatedTask));
+    }
     // TODO deleteボタンの実装
     return (
         <View style={styles.container}>
-            <Text style={styles.item}>{props.task.title}</Text>
+            <TextInput
+                style={styles.item}
+                onChangeText={handleOnChangeTitle}
+                value={props.task.title}
+            />
             <Text style={styles.item}>{props.task.description}</Text>
             <Button title="close" onPress={props.handlePress}/>
         </View>
