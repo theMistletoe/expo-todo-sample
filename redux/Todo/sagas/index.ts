@@ -2,24 +2,21 @@
 
 import { put, takeEvery, call } from 'redux-saga/effects'
 
-export function fetchJokeApi() {
-  return fetch('https://official-joke-api.appspot.com/random_joke')
+export function fetchBuzzWordApi() {
+  return fetch('https://corporatebs-generator.sameerkumar.website/')
     .then(response => response.json())
 }
 
-type Joke = {
-  "id": number;
-  "type": string;
-  "setup": string;
-  "punchline": string;
+type BuzzWord = {
+  "phrase": string;
 }
 
 export function* fetchJoke() {
   try {
-    const joke: Joke = yield call(fetchJokeApi);
+    const buzzWord: BuzzWord = yield call(fetchBuzzWordApi);
     yield put({
       type: 'ADD_TASK',
-      title: joke.setup.concat('→', joke.punchline),
+      title: buzzWord.phrase,
     });
   } catch (e) {
     // TODO 未実装
