@@ -1,17 +1,23 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { useSelector } from 'react-redux'
+import { Button, StyleSheet, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux'
 import TaskList from '../components/TaskList';
 import TaskForm from '../components/TaskForm';
+import { addJokeTask } from '../redux/Todo/actions';
 
 export default function App() {
 
+  const dispatch = useDispatch();
   const getData = useSelector((state: any) => state);
 
   return (
     <View style={styles.container}>
       <TaskForm />
       <TaskList tasks={getData.todos} />
+      <Button
+          onPress={() => dispatch(addJokeTask())}
+          title="joke"
+        />
     </View>
   );
 }
