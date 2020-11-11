@@ -16,7 +16,7 @@ export default function App() {
       <TaskList tasks={getData.todos} />
       <Button
           onPress={() => dispatch(addJokeTask())}
-          title="joke"
+          title="ADD from API"
         />
     </View>
   );
