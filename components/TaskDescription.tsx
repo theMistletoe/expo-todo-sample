@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, GestureResponderEvent, TextInput } from 'react-native';
+import { StyleSheet, View, Button, GestureResponderEvent, TextInput } from 'react-native';
 import { TaskItem } from '../types/TaskItem';
 import { useDispatch } from 'react-redux';
-import { updateTask } from '../redux/Todo/actions';
+import { deleteTask, updateTask } from '../redux/Todo/actions';
+import { useNavigation } from '@react-navigation/native';
 
 type Props = {
     task: TaskItem;
@@ -10,6 +11,7 @@ type Props = {
 }
 
 const TaskDescription = (props: Props) => {
+    const navigation = useNavigation();
     const dispatch = useDispatch();
 
     const handleOnChangeTitle = (title: string) => {
@@ -28,7 +30,11 @@ const TaskDescription = (props: Props) => {
         dispatch(updateTask(updatedTask));
     }
 
-    // TODO deleteボタンの実装
+    const handlePressOnDeleteButton = () => {
+        dispatch(deleteTask(props.task.id));
+        navigation.navigate('Home');
+    }
+
     return (
         <View style={styles.container}>
             <TextInput
@@ -41,7 +47,14 @@ const TaskDescription = (props: Props) => {
                 onChangeText={handleOnChangeDescription}
                 value={props.task.description}
             />
-            <Button title="close" onPress={props.handlePress}/>
+            <View style={{flex: 1, flexDirection: 'row'}}>
+                <View style={styles.item}>
+                    <Button title="close" onPress={props.handlePress}/>
+                </View>
+                <View style={styles.item}>
+                    <Button color='red' title="Delete" onPress={handlePressOnDeleteButton} />
+                </View>
+            </View>
         </View>
     );
 };
