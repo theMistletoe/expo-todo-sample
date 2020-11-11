@@ -5,11 +5,15 @@ import Detail from './pages/Detail';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
-import { store } from './redux/store'
+import configureStore from './redux/store'
 import { Provider } from 'react-redux'
+import rootSaga from './redux/Todo/sagas';
 
 // (1) StackNavigatorを生成する
 const Stack = createStackNavigator();
+
+const store = configureStore()
+store.runSaga(rootSaga)
 
 export default function App() {
 
