@@ -12,7 +12,6 @@ type Props = {
 const TaskDescription = (props: Props) => {
     const dispatch = useDispatch();
 
-    // TODO 入力に応じてdescのstateをupdateできるようにする
     const handleOnChangeTitle = (title: string) => {
         const updatedTask: TaskItem = {
             ...props.task,
