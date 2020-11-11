@@ -1,5 +1,4 @@
 /* eslint-disable no-constant-condition */
-
 import { put, takeEvery, call } from 'redux-saga/effects'
 
 export function fetchBuzzWordApi() {
@@ -11,7 +10,7 @@ type BuzzWord = {
   "phrase": string;
 }
 
-export function* fetchJoke() {
+export function* fetchBuzzWord() {
   try {
     const buzzWord: BuzzWord = yield call(fetchBuzzWordApi);
     yield put({
@@ -25,5 +24,5 @@ export function* fetchJoke() {
 }
 
 export default function* rootSaga() {
-  yield takeEvery('JOKE_FETCH_REQUESTED', fetchJoke);
+  yield takeEvery('ADD_TASK_FROM_API', fetchBuzzWord);
 }

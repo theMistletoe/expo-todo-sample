@@ -3,7 +3,7 @@ import { Button, StyleSheet, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux'
 import TaskList from '../components/TaskList';
 import TaskForm from '../components/TaskForm';
-import { addJokeTask } from '../redux/Todo/actions';
+import { addTaskFromAPI } from '../redux/Todo/actions';
 
 export default function App() {
 
@@ -15,7 +15,7 @@ export default function App() {
       <TaskForm />
       <TaskList tasks={getData.todos} />
       <Button
-        onPress={() => dispatch(addJokeTask())}
+        onPress={() => dispatch(addTaskFromAPI())}
         title="ADD from API"
       />
     </View>
