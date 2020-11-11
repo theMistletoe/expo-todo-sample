@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, Text, FlatList } from 'react-native';
+import { FlatList } from 'react-native';
 import { TaskItem } from '../types/TaskItem';
 import Task from './Task';
 
@@ -19,13 +19,5 @@ const TaskList = (props: Props) => {
         />
     );
 };
-
-const styles = StyleSheet.create({
-    item: {
-        padding: 10,
-        fontSize: 18,
-        height: 44,
-    },
-});
 
 export default TaskList;

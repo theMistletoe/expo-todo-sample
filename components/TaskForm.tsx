@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button } from 'react-native';
+import { View, TextInput, Button, StyleSheet } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { addTask } from '../redux/Todo/actions';
 
@@ -13,7 +13,7 @@ const TaskForm = () => {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <TextInput
         style={{height: 40}}
         placeholder="Type Task Title here!"
@@ -27,5 +27,12 @@ const TaskForm = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    justifyContent: 'center',
+  }
+});
 
 export default TaskForm;
