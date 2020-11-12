@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot test sample renders correctly with defaults 1`] = `
+<Text>
+  10
+  !
+</Text>
+`;
