@@ -9,7 +9,7 @@ const Sample = (props: Props) => {
 
   return (
     <Text>
-      {props.number}!
+      {props.number}!!!
     </Text>
   );
 };

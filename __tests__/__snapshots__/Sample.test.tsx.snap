@@ -3,6 +3,6 @@
 exports[`Snapshot test sample renders correctly with defaults 1`] = `
 <Text>
   10
-  !
+  !!!
 </Text>
 `;
